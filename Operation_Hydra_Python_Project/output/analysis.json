@@ -1,0 +1,187 @@
+{
+  "case": "Operation Hydra (synthetic)",
+  "email_analysis": [
+    {
+      "file": "01_kyc.eml",
+      "sha256": "c9be8c5e8e1c68fca6dae4f077ed9ced735d3a37693e269b699dff36b1b7ae1c",
+      "from_domain": "secure-benefit.example",
+      "reply_to_domain": "benefit-alert.example",
+      "received_ip": "none (reserved fixture)",
+      "authentication_results": "mail.example.net; spf=fail smtp.mailfrom=secure-benefit.example; dkim=none; dmarc=fail header.from=secure-benefit.example",
+      "fixture_dns": {
+        "spf": "fail",
+        "dkim": "none",
+        "dmarc": "fail",
+        "whois": "unavailable: reserved example domain"
+      },
+      "urls": [
+        "https://secure-benefit.example/verify"
+      ],
+      "attachments": []
+    },
+    {
+      "file": "02_invoice.eml",
+      "sha256": "333bc326b28f30d9a67f6092795b4c08d185b75435400c4c8c252a92d959a179",
+      "from_domain": "benefit-bank.example",
+      "reply_to_domain": "",
+      "received_ip": "none (reserved fixture)",
+      "authentication_results": "mail.example.net; spf=pass smtp.mailfrom=benefit-bank.example; dkim=pass header.d=benefit-bank.example; dmarc=pass header.from=benefit-bank.example",
+      "fixture_dns": {
+        "spf": "pass (fixture claim)",
+        "dkim": "pass (fixture claim)",
+        "dmarc": "pass (fixture claim)",
+        "whois": "unavailable: reserved example domain"
+      },
+      "urls": [],
+      "attachments": [
+        "invoice-metadata.json"
+      ]
+    },
+    {
+      "file": "03_otp.eml",
+      "sha256": "d322f746f4577a3f539fa588c92d20f9d3fb71896244c820186b89749d690bba",
+      "from_domain": "benefit-alert.example",
+      "reply_to_domain": "benefit-support.example",
+      "received_ip": "none (reserved fixture)",
+      "authentication_results": "mail.example.net; spf=fail smtp.mailfrom=benefit-alert.example; dkim=none; dmarc=fail header.from=benefit-alert.example",
+      "fixture_dns": {
+        "spf": "fail",
+        "dkim": "none",
+        "dmarc": "fail",
+        "whois": "unavailable: reserved example domain"
+      },
+      "urls": [
+        "https://benefit-alert.example/check"
+      ],
+      "attachments": []
+    },
+    {
+      "file": "04_followup.eml",
+      "sha256": "28c20c99f28f2accf9872e7740fe634c41e08834bfd28223e5112d92218ac637",
+      "from_domain": "benefit-support.example",
+      "reply_to_domain": "",
+      "received_ip": "none (reserved fixture)",
+      "authentication_results": "mail.example.net; spf=softfail smtp.mailfrom=benefit-support.example; dkim=none; dmarc=fail header.from=benefit-support.example",
+      "fixture_dns": {
+        "spf": "softfail",
+        "dkim": "none",
+        "dmarc": "fail",
+        "whois": "unavailable: reserved example domain"
+      },
+      "urls": [
+        "https://benefit-support.example/continue"
+      ],
+      "attachments": []
+    }
+  ],
+  "payload_analysis": {
+    "sha256": "d8ff6487695feecf605611d6bc5d7704b986568441f93fffa6598299bf0cb8fd",
+    "classification": "Trojan-style lure simulation",
+    "behaviors": [
+      "credential_prompt",
+      "fake_session_capture",
+      "payment_redirection"
+    ],
+    "iocs": {
+      "domains": [
+        "secure-benefit.example",
+        "benefit-alert.example"
+      ],
+      "ip_addresses": [
+        "192.0.2.10",
+        "203.0.113.30"
+      ],
+      "file_marker": "invoice-metadata.json",
+      "mock_path": "/verify"
+    },
+    "note": "JSON describes behavior only; nothing is executed or decoded into code."
+  },
+  "financial_trace": {
+    "transactions": [
+      {
+        "id": "T01",
+        "timestamp_ist": "2026-09-15T10:02:00+05:30",
+        "from_account": "victim",
+        "to_account": "mule_a",
+        "amount_inr": "40000",
+        "channel": "UPI",
+        "note": "simulated unauthorized payment"
+      },
+      {
+        "id": "T02",
+        "timestamp_ist": "2026-09-15T10:05:00+05:30",
+        "from_account": "mule_a",
+        "to_account": "mule_b",
+        "amount_inr": "25000",
+        "channel": "UPI",
+        "note": "first split"
+      },
+      {
+        "id": "T03",
+        "timestamp_ist": "2026-09-15T10:06:00+05:30",
+        "from_account": "mule_a",
+        "to_account": "mule_c",
+        "amount_inr": "15000",
+        "channel": "UPI",
+        "note": "second split"
+      },
+      {
+        "id": "T04",
+        "timestamp_ist": "2026-09-15T10:10:00+05:30",
+        "from_account": "mule_b",
+        "to_account": "exchange_demo",
+        "amount_inr": "25000",
+        "channel": "bank transfer",
+        "note": "simulated exchange deposit"
+      },
+      {
+        "id": "T05",
+        "timestamp_ist": "2026-09-15T10:12:00+05:30",
+        "from_account": "mule_c",
+        "to_account": "cashout_demo",
+        "amount_inr": "15000",
+        "channel": "bank transfer",
+        "note": "simulated withdrawal"
+      }
+    ],
+    "paths_by_transaction_id": [
+      [
+        "T01",
+        "T02",
+        "T04"
+      ],
+      [
+        "T01",
+        "T03",
+        "T05"
+      ]
+    ],
+    "account_totals_inr": {
+      "cashout_demo": {
+        "incoming": 15000,
+        "outgoing": 0
+      },
+      "exchange_demo": {
+        "incoming": 25000,
+        "outgoing": 0
+      },
+      "mule_a": {
+        "incoming": 40000,
+        "outgoing": 40000
+      },
+      "mule_b": {
+        "incoming": 25000,
+        "outgoing": 25000
+      },
+      "mule_c": {
+        "incoming": 15000,
+        "outgoing": 15000
+      },
+      "victim": {
+        "incoming": 0,
+        "outgoing": 40000
+      }
+    },
+    "caution": "Paths indicate recorded transfers, not proof of beneficial ownership; amounts can split or combine."
+  }
+}

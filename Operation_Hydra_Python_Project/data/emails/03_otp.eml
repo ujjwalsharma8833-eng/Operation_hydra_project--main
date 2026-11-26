@@ -1,0 +1,12 @@
+From: "Benefit Account Team" <otp@benefit-alert.example>
+To: victim@example.net
+Reply-To: support@benefit-support.example
+Subject: Confirm payment change
+Date: Tue, 15 Sep 2026 09:25:00 +0530
+Message-ID: <fixture-03@benefit-alert.example>
+Received: from demo-host (demo-host [203.0.113.30]) by mail.example.net; Tue, 15 Sep 2026 09:25:02 +0530
+Authentication-Results: mail.example.net; spf=fail smtp.mailfrom=benefit-alert.example; dkim=none; dmarc=fail header.from=benefit-alert.example
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Urgent: confirm a payment change at https://benefit-alert.example/check . This is a fake fixture URL.

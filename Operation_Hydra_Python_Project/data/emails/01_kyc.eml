@@ -1,0 +1,12 @@
+From: "Benefit Bank Security" <notice@secure-benefit.example>
+To: victim@example.net
+Reply-To: help@benefit-alert.example
+Subject: Urgent KYC verification
+Date: Tue, 15 Sep 2026 09:10:00 +0530
+Message-ID: <fixture-01@secure-benefit.example>
+Received: from demo-host (demo-host [192.0.2.10]) by mail.example.net; Tue, 15 Sep 2026 09:10:02 +0530
+Authentication-Results: mail.example.net; spf=fail smtp.mailfrom=secure-benefit.example; dkim=none; dmarc=fail header.from=secure-benefit.example
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Your account requires KYC. In this simulation, the mock link is https://secure-benefit.example/verify . Do not enter credentials.

@@ -1,0 +1,21 @@
+From: "Benefit Bank" <billing@benefit-bank.example>
+To: victim@example.net
+Subject: Invoice review
+Date: Tue, 15 Sep 2026 09:18:00 +0530
+Message-ID: <fixture-02@benefit-bank.example>
+Received: from demo-host (demo-host [198.51.100.20]) by mail.example.net; Tue, 15 Sep 2026 09:18:02 +0530
+Authentication-Results: mail.example.net; spf=pass smtp.mailfrom=benefit-bank.example; dkim=pass header.d=benefit-bank.example; dmarc=pass header.from=benefit-bank.example
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="abc"
+
+--abc
+Content-Type: text/plain; charset=utf-8
+
+Review the attached invoice. The attachment is inert JSON and is not a real document or executable.
+--abc
+Content-Type: application/json; name="invoice-metadata.json"
+Content-Disposition: attachment; filename="invoice-metadata.json"
+Content-Transfer-Encoding: 7bit
+
+{"simulation": true, "payload_ref": "data/payload.json"}
+--abc--

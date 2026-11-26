@@ -1,0 +1,10 @@
+{
+  "sample_type": "inert behavior description",
+  "behaviors": ["credential_prompt", "fake_session_capture", "payment_redirection"],
+  "iocs": {
+    "domains": ["secure-benefit.example", "benefit-alert.example"],
+    "ip_addresses": ["192.0.2.10", "203.0.113.30"],
+    "file_marker": "invoice-metadata.json",
+    "mock_path": "/verify"
+  }
+}

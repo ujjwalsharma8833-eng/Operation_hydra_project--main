@@ -1,0 +1,26 @@
+{
+  "secure-benefit.example": {
+    "spf": "fail",
+    "dkim": "none",
+    "dmarc": "fail",
+    "whois": "unavailable: reserved example domain"
+  },
+  "benefit-bank.example": {
+    "spf": "pass ",
+    "dkim": "pass ",
+    "dmarc": "pass ",
+    "whois": "unavailable: reserved example domain"
+  },
+  "benefit-alert.example": {
+    "spf": "fail",
+    "dkim": "none",
+    "dmarc": "fail",
+    "whois": "unavailable: reserved example domain"
+  },
+  "benefit-support.example": {
+    "spf": "softfail",
+    "dkim": "none",
+    "dmarc": "fail",
+    "whois": "unavailable: reserved example domain"
+  }
+}

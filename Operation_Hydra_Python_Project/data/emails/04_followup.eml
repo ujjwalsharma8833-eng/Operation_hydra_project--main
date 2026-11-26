@@ -1,0 +1,11 @@
+From: "Benefit Help Desk" <desk@benefit-support.example>
+To: victim@example.net
+Subject: Final reminder
+Date: Tue, 15 Sep 2026 09:40:00 +0530
+Message-ID: <fixture-04@benefit-support.example>
+Received: from demo-host (demo-host [192.0.2.40]) by mail.example.net; Tue, 15 Sep 2026 09:40:02 +0530
+Authentication-Results: mail.example.net; spf=softfail smtp.mailfrom=benefit-support.example; dkim=none; dmarc=fail header.from=benefit-support.example
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+
+Please confirm at https://benefit-support.example/continue . Simulation only.

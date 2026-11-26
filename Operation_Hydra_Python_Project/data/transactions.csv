@@ -1,0 +1,6 @@
+id,timestamp_ist,from_account,to_account,amount_inr,channel,note
+T01,2026-09-15T10:02:00+05:30,victim,mule_a,40000,UPI,simulated unauthorized payment
+T02,2026-09-15T10:05:00+05:30,mule_a,mule_b,25000,UPI,first split
+T03,2026-09-15T10:06:00+05:30,mule_a,mule_c,15000,UPI,second split
+T04,2026-09-15T10:10:00+05:30,mule_b,exchange_demo,25000,bank transfer,simulated exchange deposit
+T05,2026-09-15T10:12:00+05:30,mule_c,cashout_demo,15000,bank transfer,simulated withdrawal
