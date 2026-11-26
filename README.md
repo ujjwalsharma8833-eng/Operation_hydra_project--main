@@ -199,9 +199,9 @@ It provides a structured practical understanding of how digital evidence can be 
 
 **Kartik Kumar**
 
-GitHub: [@Kartik311209](https://github.com/Kartik311209)
+GitHub: [@ujjwalsharma8833-eng](https://github.com/ujjwalsharma8833-eng)
 
-Project: [Operation Hydra](https://github.com/Kartik311209/Operation_hydra_project-)
+Project: [Operation Hydra](https://github.com/ujjwalsharma8833-eng/Operation_hydra_project-)
 
 ---
 
